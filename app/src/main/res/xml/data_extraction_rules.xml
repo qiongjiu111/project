@@ -1,0 +1,3 @@
+<rules>
+    <data-extraction-rule domain="file" path="."/>
+</rules>
