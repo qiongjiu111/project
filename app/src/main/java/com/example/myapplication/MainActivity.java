@@ -4,12 +4,9 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(s);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         adapter = new LutemonAdapter(new ArrayList<>(storage.getAllLutemons()));
         RecyclerView rv = findViewById(R.id.rvLutemons);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -33,21 +27,21 @@ public class MainActivity extends AppCompatActivity {
             EditText input = new EditText(this);
             input.setHint("Enter name");
             new AlertDialog.Builder(this)
-                    .setTitle("Name")
+                    .setTitle("Lutemon Name")
                     .setView(input)
                     .setPositiveButton("Next", (d, w) -> {
-                        String name = input.getText().toString();
+                        String name = input.getText().toString().trim();
                         String[] colors = {"White","Green","Pink","Orange","Black"};
                         new AlertDialog.Builder(this)
-                                .setTitle("Color")
+                                .setTitle("Choose Color")
                                 .setItems(colors, (di, wi) -> {
                                     Lutemon l;
-                                    switch (colors[wi]) {
-                                        case "Green":  l = new GreenLutemon(name); break;
-                                        case "Pink":   l = new PinkLutemon(name);  break;
-                                        case "Orange": l = new OrangeLutemon(name);break;
-                                        case "Black":  l = new BlackLutemon(name); break;
-                                        default:       l = new WhiteLutemon(name); break;
+                                    switch(colors[wi]) {
+                                        case "Green":  l = new GreenLutemon(name);  break;
+                                        case "Pink":   l = new PinkLutemon(name);   break;
+                                        case "Orange": l = new OrangeLutemon(name); break;
+                                        case "Black":  l = new BlackLutemon(name);  break;
+                                        default:       l = new WhiteLutemon(name);  break;
                                     }
                                     storage.addLutemon(l);
                                     refreshList();

@@ -2,11 +2,11 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="12dp"
-    app:cardElevation="2dp">
+    app:cardElevation="4dp"
+    android:layout_margin="8dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -19,7 +19,7 @@
             android:id="@+id/imgLutemon"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:contentDescription="@string/lutemon_image"/>
+            android:contentDescription="@string/lutemon_image" />
 
         <TextView
             android:id="@+id/tvStats"
@@ -27,6 +27,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
